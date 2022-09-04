@@ -13,7 +13,52 @@ const SignUp: React.FunctionComponent<ISignUp> = (props) => {
           >
             <div className="modal-dialog">
               <div className="modal-content">
-                <div className="modal-header"></div>
+                <div className="modal-header">
+                  <h5 className="modal-title">Sign Up</h5>
+                  <button className="btn-close"></button>
+                </div>
+                <div className="modal-body">
+                  <form className="sign-up-form">
+                    <div className="mb-3">
+                      <label className="form-label" htmlFor="SignUpEmail">
+                        Email address
+                      </label>
+                      <input
+                        name="email"
+                        required
+                        type="email"
+                        className="form-control"
+                        id="signUpEmail"
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <label className="form-label" htmlFor="SignUpPwd">
+                        Password
+                      </label>
+                      <input
+                        name="pwd"
+                        required
+                        type="password"
+                        className="form-control"
+                        id="signUpPwd"
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <label className="form-label" htmlFor="SignUpConfirmPwd">
+                        Confirm Password
+                      </label>
+                      <input
+                        name="cpwd"
+                        required
+                        type="password"
+                        className="form-control"
+                        id="signUpConfirmPwd"
+                      />
+                      <p className="text-danger mt-1">Validation</p>
+                    </div>
+                    <button className="btn btn-primary">Submit</button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
