@@ -1,11 +1,15 @@
-import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/Home";
 
-function App() {
+export interface IAppProps {}
+const App: React.FunctionComponent<IAppProps> = (props) => {
   return (
-    <div className="App">
-      <h1 className="display-1">Bootstrap !</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
