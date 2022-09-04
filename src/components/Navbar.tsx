@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Navbar() {
+export interface INavbar {}
+
+const Navbar: React.FunctionComponent<INavbar> = (props) => {
   return (
     <nav className="navbar navbar-light bg-light px-4">
       <Link to="/" className="navbar-brand">
@@ -14,4 +16,5 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+};
+export default Navbar;
