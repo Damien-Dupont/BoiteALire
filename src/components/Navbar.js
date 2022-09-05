@@ -3,7 +3,7 @@ import { UserContext } from "../context/userContext";
 import { Link } from "react-router-dom";
 // import { INavbar, IAppContext } from "../@Types/lectures";
 
-const Navbar = (props) => {
+export default function Navbar() {
   const { toggleModals } = useContext(UserContext);
   return (
     <nav className="navbar navbar-light bg-light px-4">
@@ -27,5 +27,4 @@ const Navbar = (props) => {
       </div>
     </nav>
   );
-};
-export default function Navbar();
+}
