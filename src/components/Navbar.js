@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/userContext";
 import { Link } from "react-router-dom";
-import { INavbar, IAppContext } from "../@Types/lectures";
+// import { INavbar, IAppContext } from "../@Types/lectures";
 
-const Navbar: React.FunctionComponent<INavbar> = (props) => {
+const Navbar = (props) => {
   const { toggleModals } = useContext(UserContext);
   return (
     <nav className="navbar navbar-light bg-light px-4">
@@ -28,4 +28,4 @@ const Navbar: React.FunctionComponent<INavbar> = (props) => {
     </nav>
   );
 };
-export default Navbar;
+export default function Navbar();
