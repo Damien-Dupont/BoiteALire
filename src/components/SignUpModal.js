@@ -4,7 +4,7 @@ import { UserContext } from "../context/userContext";
 
 // const SignUp: React.FunctionComponent<ISignUp> = (props) => {
 export default function SignUpModal() {
-  const { toggleModals, modalState } = useContext(UserContext);
+  const { toggleModals, modalState, signUp } = useContext(UserContext);
 
   const [validation, setValidation] = useState("");
 
