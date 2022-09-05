@@ -38,16 +38,22 @@ export default function SignUpModal() {
       );
       formRef.current.reset();
       setValidation("");
-      return;
     } catch (err) {
       if (err.code === "auth/invalid-email") {
         setValidation("Email format invalid");
       }
+
       if (err.code === "auth/email-already-in-use") {
         setValidation("Email already used");
       }
     }
   };
+
+  const closeModal = () => {
+    setValidation("");
+    toggleModals("close");
+  };
+
   return (
     <>
       {modalState.signUpModal && (
