@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getImpliedNodeFormatForFile } from "typescript";
 import { UserContext } from "../context/userContext";
 // import { ISignUp, Iinputs } from "../@Types/lectures";
@@ -6,6 +7,7 @@ import { UserContext } from "../context/userContext";
 // const SignUp: React.FunctionComponent<ISignUp> = (props) => {
 export default function SignUpModal() {
   const { toggleModals, modalState, signUp } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const [validation, setValidation] = useState("");
 
@@ -38,6 +40,8 @@ export default function SignUpModal() {
       );
       formRef.current.reset();
       setValidation("");
+      toggleModals("close");
+      navigate("/private/private-home");
     } catch (err) {
       if (err.code === "auth/invalid-email") {
         setValidation("Email format invalid");
