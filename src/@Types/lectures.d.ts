@@ -1,8 +1,9 @@
 export interface IAppContext {
-  name: string;
-  author: string;
-  url: string;
+  toggleModals: string;
+  modalState: string;
 }
 
 export interface ISignUp {}
 export interface INavbar {}
+
+export interface Iinputs {}

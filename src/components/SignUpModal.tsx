@@ -1,10 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { UserContext } from "../context/userContext";
-import { ISignUp } from "../@Types/lectures";
+import { ISignUp, Iinputs } from "../@Types/lectures";
 
 const SignUp: React.FunctionComponent<ISignUp> = (props) => {
   const { toggleModals, modalState } = useContext(UserContext);
 
+  const [validation, setValidation] = useState("");
+
+  const inputs: { [key: string]: string } = useRef([]);
+  const addInputs: Function = (el: Event) => {
+    if (el && !inputs.current.includes(el)) {
+      inputs.current.push(el);
+    }
+  };
+
+  const handleForm: Function = (e: Event) => {
+    e.preventDefault();
+
+    if (
+      (inputs.current[1].value.length || inputs.current[2].value.length) < 6
+    ) {
+      setValidation("6 characters minimum");
+      return;
+    } else if (inputs.current[1].value !== inputs.current[2].value) {
+      setValidation("Passwords do not match");
+      return;
+    }
+  };
   return (
     <>
       {modalState.signUpModal && (
@@ -27,12 +49,13 @@ const SignUp: React.FunctionComponent<ISignUp> = (props) => {
                   ></button>
                 </div>
                 <div className="modal-body">
-                  <form className="sign-up-form">
+                  <form onSubmit={handleForm} className="sign-up-form">
                     <div className="mb-3">
                       <label className="form-label" htmlFor="SignUpEmail">
                         Email address
                       </label>
                       <input
+                        ref={addInputs}
                         name="email"
                         required
                         type="email"
@@ -45,6 +68,7 @@ const SignUp: React.FunctionComponent<ISignUp> = (props) => {
                         Password
                       </label>
                       <input
+                        ref={addInputs}
                         name="pwd"
                         required
                         type="password"
@@ -57,13 +81,14 @@ const SignUp: React.FunctionComponent<ISignUp> = (props) => {
                         Confirm Password
                       </label>
                       <input
+                        ref={addInputs}
                         name="cpwd"
                         required
                         type="password"
                         className="form-control"
                         id="signUpConfirmPwd"
                       />
-                      <p className="text-danger mt-1">Validation</p>
+                      <p className="text-danger mt-1">{validation}</p>
                     </div>
                     <button className="btn btn-primary">Submit</button>
                   </form>

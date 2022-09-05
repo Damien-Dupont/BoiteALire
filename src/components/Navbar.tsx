@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/userContext";
 import { Link } from "react-router-dom";
-import { INavbar } from "../@Types/lectures";
+import { INavbar, IAppContext } from "../@Types/lectures";
 
 const Navbar: React.FunctionComponent<INavbar> = (props) => {
   const { toggleModals } = useContext(UserContext);
