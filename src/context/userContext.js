@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import { IAppContext } from "../@Types/lectures";
 
 // export const UserContext = createContext<IAppContext | null>(null);
-export const UserConext = createContext();
+export const UserContext = createContext();
 
 // const LectProvider: React.FC<React.ReactNode> = ({children}) => {CONST [tod, setTod] = React.useState<>
 
