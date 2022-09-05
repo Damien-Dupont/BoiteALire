@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { IAppContext } from "../@Types/lectures";
+// import { IAppContext } from "../@Types/lectures";
 
 // export const UserContext = createContext<IAppContext | null>(null);
 export const UserContext = createContext();

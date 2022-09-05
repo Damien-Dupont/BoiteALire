@@ -5,3 +5,4 @@ export interface IAppContext {
 }
 
 export interface ISignUp {}
+export interface INavbar {}
