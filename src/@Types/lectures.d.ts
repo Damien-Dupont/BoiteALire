@@ -3,3 +3,5 @@ export interface IAppContext {
   author: string;
   url: string;
 }
+
+export interface ISignUp {}
