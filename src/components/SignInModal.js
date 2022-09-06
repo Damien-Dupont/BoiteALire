@@ -5,7 +5,7 @@ import { UserContext } from "../context/userContext";
 // import { ISignUp, Iinputs } from "../@Types/lectures";
 
 // const SignUp: React.FunctionComponent<ISignUp> = (props) => {
-export default function SignUpModal() {
+export default function SignInModal() {
   const { toggleModals, modalState, signIn } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -24,10 +24,7 @@ export default function SignUpModal() {
     e.preventDefault();
 
     try {
-      const cred = await signIn(
-        inputs.current[0].value,
-        inputs.current[1].value
-      );
+      await signIn(inputs.current[0].value, inputs.current[1].value);
       formRef.current.reset();
       setValidation("");
       toggleModals("close");

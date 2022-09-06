@@ -34,10 +34,7 @@ export default function SignUpModal() {
     }
 
     try {
-      const cred = await signUp(
-        inputs.current[0].value,
-        inputs.current[1].value
-      );
+      await signUp(inputs.current[0].value, inputs.current[1].value);
       formRef.current.reset();
       setValidation("");
       toggleModals("close");
