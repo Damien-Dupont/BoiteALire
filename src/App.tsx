@@ -4,8 +4,8 @@ import HomePage from "./pages/Home";
 import AboutPage from "./pages/About";
 import Navbar from "./components/Navbar";
 import SignUpModal from "./components/SignUpModal";
-import Private from "./pages/private/Private";
-import PrivateHome from "./pages/private/privateHome/PrivateHome";
+import Private from "./pages/Private/Private";
+import PrivateHome from "./pages/Private/PrivateHome/PrivateHome";
 
 export interface IAppProps {}
 
