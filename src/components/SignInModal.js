@@ -5,8 +5,8 @@ import { UserContext } from "../context/userContext";
 // import { ISignUp, Iinputs } from "../@Types/lectures";
 
 // const SignUp: React.FunctionComponent<ISignUp> = (props) => {
-export default function SignUpModal() {
-  const { toggleModals, modalState, signUp } = useContext(UserContext);
+export default function SignInModal() {
+  const { toggleModals, modalState, signIn } = useContext(UserContext);
   const navigate = useNavigate();
 
   const [validation, setValidation] = useState("");
@@ -23,30 +23,13 @@ export default function SignUpModal() {
   const handleForm = async (e) => {
     e.preventDefault();
 
-    if (
-      (inputs.current[1].value.length || inputs.current[2].value.length) < 6
-    ) {
-      setValidation("6 characters minimum");
-      return;
-    } else if (inputs.current[1].value !== inputs.current[2].value) {
-      setValidation("Passwords do not match");
-      return;
-    }
-
     try {
-      await signUp(inputs.current[0].value, inputs.current[1].value);
-
+      await signIn(inputs.current[0].value, inputs.current[1].value);
       setValidation("");
       toggleModals("close");
       navigate("/private/private-home");
-    } catch (err) {
-      if (err.code === "auth/invalid-email") {
-        setValidation("Email format invalid");
-      }
-
-      if (err.code === "auth/email-already-in-use") {
-        setValidation("Email already used");
-      }
+    } catch {
+      setValidation("Email or password invalid");
     }
   };
 
@@ -57,7 +40,7 @@ export default function SignUpModal() {
 
   return (
     <>
-      {modalState.signUpModal && (
+      {modalState.signInModal && (
         <div className="position-fixed top-0 vw-100 vh-100">
           <div
             className="w-100 h-100 bg-dark bg-opacity-75"
@@ -70,7 +53,7 @@ export default function SignUpModal() {
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title">Sign Up</h5>
+                  <h5 className="modal-title">Sign In</h5>
                   <button
                     className="btn-close"
                     onClick={() => toggleModals("close")}
@@ -80,10 +63,10 @@ export default function SignUpModal() {
                   <form
                     ref={formRef}
                     onSubmit={handleForm}
-                    className="sign-up-form"
+                    className="sign-in-form"
                   >
                     <div className="mb-3">
-                      <label className="form-label" htmlFor="SignUpEmail">
+                      <label className="form-label" htmlFor="SignInEmail">
                         Email address
                       </label>
                       <input
@@ -92,11 +75,11 @@ export default function SignUpModal() {
                         required
                         type="email"
                         className="form-control"
-                        id="signUpEmail"
+                        id="signInEmail"
                       />
                     </div>
                     <div className="mb-3">
-                      <label className="form-label" htmlFor="SignUpPwd">
+                      <label className="form-label" htmlFor="SignInPwd">
                         Password
                       </label>
                       <input
@@ -105,23 +88,11 @@ export default function SignUpModal() {
                         required
                         type="password"
                         className="form-control"
-                        id="signUpPwd"
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label className="form-label" htmlFor="SignUpConfirmPwd">
-                        Confirm Password
-                      </label>
-                      <input
-                        ref={addInputs}
-                        name="cpwd"
-                        required
-                        type="password"
-                        className="form-control"
-                        id="signUpConfirmPwd"
+                        id="signInPwd"
                       />
                       <p className="text-danger mt-1">{validation}</p>
                     </div>
+
                     <button className="btn btn-primary">Submit</button>
                   </form>
                 </div>
