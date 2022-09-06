@@ -1,10 +1,13 @@
 import React, { useContext, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getImpliedNodeFormatForFile } from "typescript";
 import { UserContext } from "../context/userContext";
 // import { ISignUp, Iinputs } from "../@Types/lectures";
 
 // const SignUp: React.FunctionComponent<ISignUp> = (props) => {
 export default function SignUpModal() {
-  const { toggleModals, modalState } = useContext(UserContext);
+  const { toggleModals, modalState, signUp } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const [validation, setValidation] = useState("");
 
@@ -15,7 +18,9 @@ export default function SignUpModal() {
     }
   };
 
-  const handleForm = (e) => {
+  const formRef = useRef();
+
+  const handleForm = async (e) => {
     e.preventDefault();
 
     if (
@@ -27,7 +32,32 @@ export default function SignUpModal() {
       setValidation("Passwords do not match");
       return;
     }
+
+    try {
+      const cred = await signUp(
+        inputs.current[0].value,
+        inputs.current[1].value
+      );
+      formRef.current.reset();
+      setValidation("");
+      toggleModals("close");
+      navigate("/private/private-home");
+    } catch (err) {
+      if (err.code === "auth/invalid-email") {
+        setValidation("Email format invalid");
+      }
+
+      if (err.code === "auth/email-already-in-use") {
+        setValidation("Email already used");
+      }
+    }
   };
+
+  const closeModal = () => {
+    setValidation("");
+    toggleModals("close");
+  };
+
   return (
     <>
       {modalState.signUpModal && (
@@ -50,7 +80,11 @@ export default function SignUpModal() {
                   ></button>
                 </div>
                 <div className="modal-body">
-                  <form onSubmit={handleForm} className="sign-up-form">
+                  <form
+                    ref={formRef}
+                    onSubmit={handleForm}
+                    className="sign-up-form"
+                  >
                     <div className="mb-3">
                       <label className="form-label" htmlFor="SignUpEmail">
                         Email address
