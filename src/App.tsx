@@ -4,6 +4,7 @@ import HomePage from "./pages/Home";
 import AboutPage from "./pages/About";
 import Navbar from "./components/Navbar";
 import SignUpModal from "./components/SignUpModal";
+import SignInModal from "./components/SignInModal";
 import Private from "./pages/Private/Private";
 import PrivateHome from "./pages/Private/PrivateHome/PrivateHome";
 
@@ -13,6 +14,7 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
   return (
     <>
       <SignUpModal />
+      <SignInModal />
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />}></Route>

@@ -25,7 +25,6 @@ export default function SignInModal() {
 
     try {
       await signIn(inputs.current[0].value, inputs.current[1].value);
-      formRef.current.reset();
       setValidation("");
       toggleModals("close");
       navigate("/private/private-home");
@@ -54,7 +53,7 @@ export default function SignInModal() {
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title">Sign Up</h5>
+                  <h5 className="modal-title">Sign In</h5>
                   <button
                     className="btn-close"
                     onClick={() => toggleModals("close")}
@@ -64,7 +63,7 @@ export default function SignInModal() {
                   <form
                     ref={formRef}
                     onSubmit={handleForm}
-                    className="sign-up-form"
+                    className="sign-in-form"
                   >
                     <div className="mb-3">
                       <label className="form-label" htmlFor="SignInEmail">
@@ -76,7 +75,7 @@ export default function SignInModal() {
                         required
                         type="email"
                         className="form-control"
-                        id="signUpEmail"
+                        id="signInEmail"
                       />
                     </div>
                     <div className="mb-3">

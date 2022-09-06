@@ -35,7 +35,7 @@ export default function SignUpModal() {
 
     try {
       await signUp(inputs.current[0].value, inputs.current[1].value);
-      formRef.current.reset();
+
       setValidation("");
       toggleModals("close");
       navigate("/private/private-home");
