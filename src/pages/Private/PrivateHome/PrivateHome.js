@@ -1,4 +1,5 @@
 import React from "react";
+import Title from "../../../components/Title";
 
 export default function PrivateHome() {
   return (
@@ -17,6 +18,7 @@ export default function PrivateHome() {
           via GIPHY
         </a>
       </p>
+      <Title />
     </div>
   );
 }
