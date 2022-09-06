@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Title from "../../../components/Title";
 import AddBooks from "../../../components/AddBooks";
-import Books from "../../../components/Books";
+import ShowBooks from "../../../components/ShowBooks";
 import {
   collection,
   query,
@@ -11,18 +11,17 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { db } from "../../../firebase-config.ts";
-import { toUnicode } from "punycode";
 
 export default function PrivateHome() {
-  const [titles, setTitles] = useState([]);
+  const [books, setBooks] = useState([]);
   useEffect(() => {
     const q = query(collection(db, "books"));
     const unsub = onSnapshot(q, (querySnapshot) => {
-      let titlesArray = [];
+      let booksArray = [];
       querySnapshot.forEach((doc) => {
-        titlesArray.push({ ...doc.data(), id: doc.id });
+        booksArray.push({ ...doc.data(), id: doc.id });
       });
-      setTitles(titlesArray);
+      setBooks(booksArray);
     });
     return () => unsub();
   }, []);
@@ -60,6 +59,7 @@ export default function PrivateHome() {
         </p>
         <Title />
         <AddBooks />
+        <ShowBooks value={books} />
       </div>
       <div className="books_container">
         {books.map((book) => (

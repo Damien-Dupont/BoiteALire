@@ -1,16 +1,12 @@
-import React from "react";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { toUnicode } from "punycode";
+import React, { useState } from "react";
 
-export default function Books({
-  book,
+export default function ShowBooks({
+  books,
   toggleComplete,
   handleDelete,
   handleEdit,
 }) {
-  const [newTitle, setNewTitle] = useState(book.title);
+  const [newTitle, setNewTitle] = useState(books.title);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -31,22 +27,25 @@ export default function Books({
         >
           <div>
             <button
-              className="button-complete"
+              className="btn btn-secondary ms-2"
               onClick={() => toggleComplete(books)}
+              id="i"
             >
-              <CheckCircleIcon id="i" />
+              {books.completed ? "Lu" : "En attente"}
             </button>
             <button
-              className="button-edit"
-              onClick={() => toggleComplete(books, newTitle)}
+              className="btn btn-secondary ms-2"
+              onClick={() => handleEdit(books, newTitle)}
+              id="i"
             >
-              <EditIcon id="i" />
+              Modifier
             </button>
             <button
-              className="button-delete"
-              onClick={() => toggleComplete(books.id)}
+              className="btn btn-danger ms-2"
+              onClick={() => handleDelete(books.id)}
+              id="i"
             >
-              <DeleteIcon id="i" />
+              Supprimer
             </button>
           </div>
         </input>

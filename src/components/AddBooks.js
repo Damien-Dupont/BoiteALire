@@ -1,10 +1,11 @@
 import { FirebaseError } from "firebase/app";
 import React, { useState } from "react";
-import { db } from "../firebase";
+import { db } from "../firebase-config.ts";
 import { collection, addDoc } from "firebase/firestore";
 
 export default function AddBooks() {
   const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (title !== "") {
