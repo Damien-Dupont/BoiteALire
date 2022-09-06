@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import { createRoot } from "react-dom/client";
-
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { UserContextProvider } from "./context/userContext";
+
+// import { createRoot } from "react-dom/client";
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <UserContextProvider>
+      <App />
+    </UserContextProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );
