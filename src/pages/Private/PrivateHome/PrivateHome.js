@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import Title from "../../../components/Title";
+import Title from "../../../components/Title";
 import AddBooks from "../../../components/AddBooks";
 import ShowBooks from "../../../components/ShowBooks";
 import {
@@ -57,7 +57,7 @@ export default function PrivateHome() {
             via GIPHY
           </a>
         </p>
-        {/* <Title /> */}
+        <Title />
         <AddBooks />
         <ShowBooks value={books} />
       </div>
@@ -65,7 +65,7 @@ export default function PrivateHome() {
         {books.map((book) => (
           <Title
             key={book.id}
-            title={book}
+            titre={book}
             toggleComplete={toggleComplete}
             handleDelete={handleDelete}
             handleEdit={handleEdit}

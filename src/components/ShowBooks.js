@@ -8,14 +8,14 @@ export default function ShowBooks({
   handleDelete,
   handleEdit,
 }) {
-  const [newTitle, setNewTitle] = useState(books.title);
+  const [newTitle, setNewTitle] = useState(books.titre);
 
   const handleChange = (e) => {
     e.preventDefault();
     if (books.complete === true) {
-      setNewTitle(books.title);
+      setNewTitle(books.titre);
     } else {
-      books.title = "";
+      books.titre = "";
       setNewTitle(e.target.value);
     }
     return (
@@ -23,7 +23,7 @@ export default function ShowBooks({
         <input
           style={{ textDecoration: books.completed && "line-through" }}
           type="text"
-          value={books.title === "" ? newTitle : books.title}
+          value={books.titre === "" ? newTitle : books.titre}
           className="list"
           onChange={handleChange}
         >
