@@ -5,15 +5,15 @@ import { collection, addDoc } from "firebase/firestore";
 
 export default function AddBooks() {
   const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
+  //   const [author, setAuthor] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (title !== "") {
       await addDoc(collection(db, "books"), {
         title,
-        author,
+        // author,
         completed: false,
-        comment: null,
+        // comment: null,
       });
       setTitle("");
     }
@@ -35,3 +35,5 @@ export default function AddBooks() {
     </form>
   );
 }
+
+// addTodo.js

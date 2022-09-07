@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+// import mui
+
 export default function ShowBooks({
   books,
   toggleComplete,
@@ -21,7 +23,7 @@ export default function ShowBooks({
         <input
           style={{ textDecoration: books.completed && "line-through" }}
           type="text"
-          value={books.title}
+          value={books.title === "" ? newTitle : books.title}
           className="list"
           onChange={handleChange}
         >
@@ -53,3 +55,5 @@ export default function ShowBooks({
     );
   };
 }
+
+// todo.js
