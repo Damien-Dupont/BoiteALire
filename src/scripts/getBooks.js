@@ -26,7 +26,28 @@ function renderBooks(doc) {
 }
 
 // getting data
+
+// realtime listener
+db.collection(
+  "books".orderBy("auteur").onSnapshot((snapshot) => {
+    let changes = snapshot.docChanges();
+    changes.forEach((change) => {
+      if (change.type === "added") {
+        renderBooks(change.doc);
+      } else if (change.type === "removed") {
+        let li = booksList.querySelector("[data-id=" + change.doc.id + "]");
+        booksList.removeChild(li);
+      }
+    });
+  })
+);
+
 db.collection("books")
+  // .where('auteur', '==', 'KeoT')
+  // .where('comment', '!==', 'null')
+  // . where('titre', '==', 'Roule Papy')
+  // penser à la casse
+  // .orderBy('titre')
   .get()
   .then((snapshot) => {
     // console.log(snapshot.docs);
