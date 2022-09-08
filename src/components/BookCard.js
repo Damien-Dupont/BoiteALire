@@ -3,7 +3,7 @@ import "./BookCard.scss";
 
 export default function BookCard({ auteur, titre }) {
   return (
-    <div heigth="100px">
+    <div heigth="90px" classname="d-sm-flex flex-wrap m-3">
       <article>
         <div class="cover-back"></div>
         <div class="pages">
