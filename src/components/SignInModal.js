@@ -27,7 +27,7 @@ export default function SignInModal() {
       await signIn(inputs.current[0].value, inputs.current[1].value);
       setValidation("");
       toggleModals("close");
-      navigate("/private/private-home");
+      navigate("/");
     } catch {
       setValidation("Email or password invalid");
     }
@@ -53,7 +53,7 @@ export default function SignInModal() {
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title">Sign In</h5>
+                  <h5 className="modal-title">🌿 S'identifier</h5>
                   <button
                     className="btn-close"
                     onClick={() => toggleModals("close")}
@@ -67,7 +67,7 @@ export default function SignInModal() {
                   >
                     <div className="mb-3">
                       <label className="form-label" htmlFor="SignInEmail">
-                        Email address
+                        Renseignez votre email
                       </label>
                       <input
                         ref={addInputs}
@@ -80,7 +80,7 @@ export default function SignInModal() {
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="SignInPwd">
-                        Password
+                        Votre mot de passe
                       </label>
                       <input
                         ref={addInputs}
@@ -93,7 +93,7 @@ export default function SignInModal() {
                       <p className="text-danger mt-1">{validation}</p>
                     </div>
 
-                    <button className="btn btn-primary">Submit</button>
+                    <button className="btn btn-primary">C'est parti 🌿</button>
                   </form>
                 </div>
               </div>

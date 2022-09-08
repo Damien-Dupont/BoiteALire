@@ -26,10 +26,10 @@ export default function SignUpModal() {
     if (
       (inputs.current[1].value.length || inputs.current[2].value.length) < 6
     ) {
-      setValidation("6 characters minimum");
+      setValidation("Sécurité faible: 6 caractères minimum");
       return;
     } else if (inputs.current[1].value !== inputs.current[2].value) {
-      setValidation("Passwords do not match");
+      setValidation("Attention: Les mots de passe ne sont pas identiques");
       return;
     }
 
@@ -41,11 +41,11 @@ export default function SignUpModal() {
       navigate("/private/private-home");
     } catch (err) {
       if (err.code === "auth/invalid-email") {
-        setValidation("Email format invalid");
+        setValidation("Email invalide");
       }
 
       if (err.code === "auth/email-already-in-use") {
-        setValidation("Email already used");
+        setValidation("Un compte existe déjà à cet email");
       }
     }
   };
@@ -70,7 +70,7 @@ export default function SignUpModal() {
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title">Sign Up</h5>
+                  <h5 className="modal-title">🌱 Sign Up</h5>
                   <button
                     className="btn-close"
                     onClick={() => toggleModals("close")}
@@ -84,7 +84,7 @@ export default function SignUpModal() {
                   >
                     <div className="mb-3">
                       <label className="form-label" htmlFor="SignUpEmail">
-                        Email address
+                        Renseignez votre email
                       </label>
                       <input
                         ref={addInputs}
@@ -97,7 +97,7 @@ export default function SignUpModal() {
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="SignUpPwd">
-                        Password
+                        Entrez un mot de passe
                       </label>
                       <input
                         ref={addInputs}
@@ -110,7 +110,7 @@ export default function SignUpModal() {
                     </div>
                     <div className="mb-3">
                       <label className="form-label" htmlFor="SignUpConfirmPwd">
-                        Confirm Password
+                        Confirmez le mot de passe
                       </label>
                       <input
                         ref={addInputs}
@@ -122,7 +122,7 @@ export default function SignUpModal() {
                       />
                       <p className="text-danger mt-1">{validation}</p>
                     </div>
-                    <button className="btn btn-primary">Submit</button>
+                    <button className="btn btn-primary">C'est parti 🌱</button>
                   </form>
                 </div>
               </div>
