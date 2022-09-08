@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/Home";
 import AboutPage from "./pages/About";
 import Navbar from "./components/Navbar";
@@ -13,9 +14,14 @@ export interface IAppProps {}
 const App: React.FunctionComponent<IAppProps> = (props) => {
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>L'Arbre à Lire</title>
+      </Helmet>
       <SignUpModal />
       <SignInModal />
       <Navbar />
+
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/" element={<AboutPage />}></Route>

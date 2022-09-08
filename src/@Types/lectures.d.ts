@@ -4,6 +4,9 @@ export interface IAppContext {
 }
 
 export interface ISignUp {}
-export interface INavbar {}
+export interface INavbar {
+  toggleModals: string;
+  currentUser: string;
+}
 
 export interface Iinputs {}
