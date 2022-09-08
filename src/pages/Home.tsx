@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/userContext";
 import paperTree from "../media/paper-cut-tree.jpg";
+import GetBooks from "../scripts/getBooks";
 
 export interface IHomePageProps {}
 
@@ -8,7 +9,6 @@ const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
   const { currentUser } = useContext(UserContext);
   const width: number =
     0.8 * (window.outerWidth > 600 ? 600 : window.outerWidth);
-  console.log(width);
 
   const message1: string = "Bienvenue dans l'Arbre à Lire.";
   const message2: string = "Heureux de vous retrouver";
@@ -25,7 +25,10 @@ const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
         <p className="text-light">{pleaseJoin}</p>
       ) : (
         <>
-          <h2 className="text-light">{welcomeBack}</h2>
+          <div className="text-light">
+            <h2>{welcomeBack}</h2>
+            <div>{<GetBooks />}</div>
+          </div>
         </>
       )}
     </div>
