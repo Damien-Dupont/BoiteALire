@@ -1,33 +1,27 @@
 import React from "react";
-// import "./BookCard.scss";
+import "./BookCard.scss";
 
 export default function BookCard({ auteur, titre }) {
   return (
-    <div>
-      {/* <div>
-        <div>
-          <div className="cover-back"></div>
-          <div className="pages">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div className="cover">
-            <span className="title">{titre}</span>
-          </div>
-          <div className="spine">
-            <span>
-              {titre} - {auteur}
-            </span>
-          </div>
-          <div className="spine-shadow"></div>
+    <div heigth="100px">
+      <article>
+        <div class="cover-back"></div>
+        <div class="pages">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-      </div> */}
-      <div className="container">
-        {titre} {auteur}
-      </div>
+        <div class="cover">
+          <span class="title">{titre}</span>
+        </div>
+        <div class="spine">
+          <span>{titre}</span>
+          <span>{auteur}</span>
+        </div>
+        <div class="spine-shadow"></div>
+      </article>
     </div>
   );
 }
