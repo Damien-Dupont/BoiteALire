@@ -29,7 +29,7 @@ export default function SignInModal() {
       toggleModals("close");
       navigate("/");
     } catch {
-      setValidation("Email or password invalid");
+      setValidation("Email ou mot de passe invalide(s)");
     }
   };
 

@@ -8,7 +8,6 @@ import { auth } from "../firebase-config";
 export default function Navbar() {
   const width = window.matchMedia("(min-width: 564px)").matches;
   const midWidth = window.matchMedia("(min-width: 682px)").matches;
-  console.log(midWidth);
 
   const { toggleModals, currentUser } = useContext(UserContext);
   const navigate = useNavigate();
@@ -39,8 +38,8 @@ export default function Navbar() {
               className="btn border-success ms-2 btn-add"
             >
               {width ? "Mon profil" : ""}{" "}
-              <span role="img" aria-label="tabanata tree">
-                🎋
+              <span role="img" aria-label="herb">
+                🌿
               </span>
             </button>
             <button
