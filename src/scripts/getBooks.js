@@ -1,6 +1,7 @@
 import { db } from "../firebase-config";
 import { collection, onSnapshot } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
+import BookCard from "../components/BookCard";
 
 const GetBooks = () => {
   const [books, setBooks] = useState([]);
@@ -14,11 +15,7 @@ const GetBooks = () => {
   return (
     <div className="container">
       {books.map((book) => (
-        <li key={book.id}>
-          <a>
-            {book.titre} ({book.auteur})
-          </a>
-        </li>
+        <BookCard titre={book.titre} auteur={book.auteur} key={book.id} />
       ))}
     </div>
   );
