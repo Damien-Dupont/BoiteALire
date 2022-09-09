@@ -32,9 +32,7 @@ export default function BookCard({ auteur, titre, commentaire }) {
   const rgbStyle = `rgba(${authorColor(auteur)[0]},${authorColor(auteur)[1]},${
     authorColor(auteur)[2]
   })`;
-  const rgbStyleReverse = `rgba(${authorColor(auteur)[2]},${
-    authorColor(auteur)[1]
-  },${authorColor(auteur)[0]})`;
+  const rgbStyleReverse = `rgba(2,2,2)`;
 
   return (
     <div className="w-auto d-sm-flex flex-wrap m-3">
@@ -60,7 +58,7 @@ export default function BookCard({ auteur, titre, commentaire }) {
                   backgroundColor: rgbStyleReverse,
                 }}
               >
-                <span className="title">Ce livre a des commentaires</span>(
+                <span className="title">Ce livre a des commentaires</span>
                 <span>
                   <span className="comments">💬</span>
                 </span>
