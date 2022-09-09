@@ -10,3 +10,10 @@ export interface INavbar {
 }
 
 export interface Iinputs {}
+
+export interface IAboutPage {
+  auteur: string;
+  titre: string;
+  cover: string;
+  commentaire: string;
+}

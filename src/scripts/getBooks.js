@@ -20,7 +20,7 @@ const GetBooks = () => {
             titre={book.titre}
             auteur={book.auteur}
             key={book.id}
-            comment={book.comment}
+            commentaire={book.commentaire}
           />
         ))}
       </div>
