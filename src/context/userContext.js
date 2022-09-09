@@ -39,18 +39,28 @@ export function UserContextProvider(props) {
       setModalState({
         signUpModal: false,
         signInModal: true,
+        addBookModal: false,
       });
     }
     if (modal === "SignUp") {
       setModalState({
         signUpModal: true,
         signInModal: false,
+        addBookModal: false,
+      });
+    }
+    if (modal === "AddBook") {
+      setModalState({
+        signUpModal: false,
+        signInModal: false,
+        addBookModal: true,
       });
     }
     if (modal === "close") {
       setModalState({
         signUpModal: false,
         signInModal: false,
+        addBookModal: false,
       });
     }
   };

@@ -8,6 +8,7 @@ import SignUpModal from "./components/SignUpModal";
 import SignInModal from "./components/SignInModal";
 import Private from "./pages/Private/Private";
 import PrivateHome from "./pages/Private/PrivateHome/PrivateHome";
+import AddBooks from "./components/AddBooks";
 
 export interface IAppProps {}
 
@@ -29,6 +30,7 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
           <Route path="/private/private-home" element={<PrivateHome />} />
         </Route>
       </Routes>
+      <AddBooks />
     </>
   );
 };
