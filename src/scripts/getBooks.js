@@ -16,7 +16,12 @@ const GetBooks = () => {
     <div className="container">
       <div className="d-sm-flex flex-wrap">
         {books.map((book) => (
-          <BookCard titre={book.titre} auteur={book.auteur} key={book.id} />
+          <BookCard
+            titre={book.titre}
+            auteur={book.auteur}
+            key={book.id}
+            comment={book.comment}
+          />
         ))}
       </div>
     </div>
