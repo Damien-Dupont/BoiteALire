@@ -1,5 +1,6 @@
 :root {
   --titlesize: 2rem;
+  --commentsize: 1.5rem;
 }
 // // //
 // #coverzone {
@@ -125,6 +126,32 @@ article {
     font-size: var(--titlesize);
     font-family: sans-serif;
     text-shadow: -1px -1px 2px rgba(255, 255, 255, 0.5);
+    text-align: right;
+  }
+  .comments {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    position: absolute;
+
+    bottom: 5%;
+    left: 5%;
+    width: 25%;
+    font-size: var(--titlesize);
+    font-family: sans-serif;
+    text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.5);
+    text-align: right;
+  }
+  .commentscount {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    position: absolute;
+
+    bottom: 8%;
+    left: 3%;
+    width: 25%;
+    font-size: var(--commentsize);
+    font-family: sans-serif;
+    text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.5);
     text-align: right;
   }
 }

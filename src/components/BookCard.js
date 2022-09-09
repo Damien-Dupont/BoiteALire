@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { ReactDOM } from "react";
 import "./BookCard.scss";
 
-export default function BookCard({ auteur, titre }) {
+export default function BookCard({ auteur, titre, comment }) {
   const bg = document.getElementById("bgcover");
 
   function authorColor(auteur) {
@@ -12,7 +12,7 @@ export default function BookCard({ auteur, titre }) {
     });
     const colorA = (255 * code) / Math.pow(10, code.length - 1);
     const colorB = 255 * (colorA - parseInt(colorA));
-    const colorC = 255 * (colorB - parseInt(colorB));
+    const colorC = 300 * (colorB - parseInt(colorB));
     rgbcolors.push(Math.floor(colorA), Math.floor(colorB), Math.floor(colorC));
     return rgbcolors;
   }
@@ -41,6 +41,14 @@ export default function BookCard({ auteur, titre }) {
             }}
           >
             <span className="title">{titre}</span>
+            {comment && comment ? (
+              <span>
+                <span className="comments">💬</span>
+                <span className="commentscount">{comment.count}</span>
+              </span>
+            ) : (
+              ""
+            )}
             <span className="author">{auteur}</span>
           </div>
         </div>
