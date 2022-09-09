@@ -1,11 +1,26 @@
 :root {
-  --titlesize: 6rem;
+  --titlesize: 2rem;
+  --commentsize: 1.5rem;
 }
+// // //
+// #coverzone {
+//   overflow: hidden;
+// }
+
+// #bgcover {
+//   position: absolute;
+//   top: 0;
+//   width: 100%;
+//   height: 100vh;
+//   mix-blend-mode: hue;
+// }
+
+// // //
 
 article {
   display: block;
-  width: 430px;
-  height: 680px;
+  width: 230px;
+  height: 340px;
   margin: auto;
   position: relative;
   z-index: 0;
@@ -80,25 +95,64 @@ article {
 .cover {
   top: 3%;
   left: 0.8%;
-
   width: 109%;
-
-  background: #f3f3f0
-    url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Moai_Rano_raraku.jpg/800px-Moai_Rano_raraku.jpg)
-    center no-repeat;
-  background-size: cover;
+  background-image: url("../media/bookcover-grey.jpeg");
+  // background-size: cover;
+  // background-color: #f3f3f0;
+  background-blend-mode: hard-light;
+  // background-size: cover;
+  position: absolute; //
 
   .title {
     display: inline-block;
     color: white;
     position: absolute;
     top: 8%;
-    left: 16%;
+    left: 10%;
+    width: 80%;
+    font-size: var(--titlesize);
+    font-family: sans-serif;
+    text-shadow: -2px -2px 2px rgba(0, 0, 0, 0.8);
+    text-align: left;
+  }
+  .author {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    position: absolute;
+
+    bottom: 5%;
+    right: 5%;
     width: 62%;
     font-size: var(--titlesize);
     font-family: sans-serif;
-    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);
-    text-align: left;
+    text-shadow: -1px -1px 2px rgba(255, 255, 255, 0.5);
+    text-align: right;
+  }
+  .comments {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    position: absolute;
+
+    bottom: 5%;
+    left: 5%;
+    width: 25%;
+    font-size: var(--titlesize);
+    font-family: sans-serif;
+    text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.5);
+    text-align: right;
+  }
+  .commentscount {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    position: absolute;
+
+    bottom: 8%;
+    left: 3%;
+    width: 25%;
+    font-size: var(--commentsize);
+    font-family: sans-serif;
+    text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.5);
+    text-align: right;
   }
 }
 
@@ -119,12 +173,12 @@ article {
     display: inline-block;
     color: white;
     position: absolute;
-    bottom: 15%;
+    bottom: 8%;
     left: -30%;
-    width: 200%;
-    height: 5%;
-    transform: rotate(-94deg);
-    font-size: 16px;
+    width: 300px;
+    height: 83%;
+    transform: rotate(-90deg);
+    font-size: 15px;
     font-family: sans-serif;
     text-align: left;
   }
@@ -139,6 +193,8 @@ article {
   top: 3%;
   left: 3.8%;
 }
+
+// // // //
 
 .cover-back {
   z-index: 1;
@@ -156,14 +212,16 @@ article {
   z-index: 7;
 }
 
-@media (max-width: 700px) {
+// // // //
+
+@media (max-width: 800px) {
   :root {
-    --titlesize: 3rem;
+    --titlesize: 1rem;
   }
 
   article {
-    width: 230px;
-    height: 380px;
+    width: 120px;
+    height: 190px;
   }
 
   .spine {
