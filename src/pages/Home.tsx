@@ -9,7 +9,7 @@ export interface IHomePageProps {}
 const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
   const { currentUser } = useContext(UserContext);
   const width: number =
-    0.8 * (window.outerWidth > 600 ? 600 : window.outerWidth);
+    0.8 * (window.outerWidth > 500 ? 500 : window.outerWidth);
 
   const helloNewGuy: string = "Bienvenue dans l'Arbre à Lire.";
   const welcomeBack: string = "Heureux de vous retrouver";
@@ -17,24 +17,28 @@ const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
     "Pour poursuivre, merci de vous connecter ou de créer un compte. C'est rapide et gratuit!";
   const question: string = "Avez-vous lu de nouveaux livres récemment?";
   return (
-    <div className="container p-5">
-      <h1 className="display-3 text-light">
-        {currentUser ? welcomeBack : helloNewGuy}
-      </h1>
-      <img src={paperTree} width={width} />
-      {!currentUser ? (
-        <>
-          <p className="text-light">{pleaseJoin}</p>
-          <AboutPage />
-        </>
-      ) : (
-        <>
-          <div className="text-light">
-            <h2>{question}</h2>
-            <GetBooks />
-          </div>
-        </>
-      )}
+    <div className="d-flex justify-content-center text-center">
+      <div className="w-auto d-sm-flex flex-column m-3">
+        <h1 className="display-4 text-light">
+          {currentUser ? welcomeBack : helloNewGuy}
+        </h1>
+        <div className="text-center">
+          <img className="img-fluid" src={paperTree} width={width} />
+        </div>
+        {!currentUser ? (
+          <>
+            <p className="text-light">{pleaseJoin}</p>
+            <AboutPage />
+          </>
+        ) : (
+          <>
+            <div className="text-light">
+              <h3>{question}</h3>
+              <GetBooks />
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };

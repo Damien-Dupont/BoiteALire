@@ -1,6 +1,6 @@
 import { db } from "../firebase-config";
 import { collection, onSnapshot } from "firebase/firestore";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import BookCard from "../components/BookCard";
 
 const GetBooks = () => {
@@ -13,16 +13,18 @@ const GetBooks = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="d-sm-flex flex-wrap">
-        {books.map((book) => (
-          <BookCard
-            titre={book.titre}
-            auteur={book.auteur}
-            key={book.id}
-            comment={book.comment}
-          />
-        ))}
+    <div className="row d-flex justify-content-center">
+      <div className="col-md-10">
+        <div className="d-flex flex-wrap">
+          {books.map((book) => (
+            <BookCard
+              titre={book.titre}
+              auteur={book.auteur}
+              key={book.id}
+              comment={book.commentaire}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

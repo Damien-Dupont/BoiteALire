@@ -1,5 +1,4 @@
-import { FirebaseError } from "firebase/app";
-import React, { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext } from "react";
 import { db } from "../firebase-config.ts";
 import { collection, addDoc } from "firebase/firestore";
 import { UserContext } from "../context/userContext";

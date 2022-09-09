@@ -1,10 +1,6 @@
-import React, { useEffect } from "react";
-import { ReactDOM } from "react";
 import "./BookCard.scss";
 
 export default function BookCard({ auteur, titre, comment }) {
-  const bg = document.getElementById("bgcover");
-
   function authorColor(auteur) {
     let rgbcolors = [];
     const code = ("0" + auteur).split("").reduce(function (prev, curr) {
@@ -16,11 +12,11 @@ export default function BookCard({ auteur, titre, comment }) {
     rgbcolors.push(Math.floor(colorA), Math.floor(colorB), Math.floor(colorC));
     return rgbcolors;
   }
-  console.log(`auteur: ${auteur} - rgbA: ${authorColor(auteur)}`);
+
   const rgbStyle = `rgba(${authorColor(auteur)[0]},${authorColor(auteur)[1]},${
     authorColor(auteur)[2]
   })`;
-
+  console.log(comment);
   return (
     <div className="w-auto d-sm-flex flex-wrap m-3">
       <article>
