@@ -43,7 +43,7 @@ export default function Navbar() {
               </span>
             </button>
             <button
-              onClick={() => toggleModals("addBookModal")}
+              onClick={() => toggleModals("AddBook")}
               className="btn border-success ms-2 btn-add"
             >
               {width ? "Ajouter un livre" : ""}{" "}
