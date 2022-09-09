@@ -6,7 +6,7 @@ import { UserContext } from "../context/userContext";
 import { useNavigate } from "react-router-dom";
 
 export default function AddBooks() {
-  const { toggleModals, modalState, bookToAdd } = useContext(UserContext);
+  const { toggleModals, modalState } = useContext(UserContext);
   const navigate = useNavigate();
 
   const [validation, setValidation] = useState("");
@@ -20,11 +20,17 @@ export default function AddBooks() {
 
   const formRef = useRef();
 
-  const handleForm = async (e) => {
+  const handleNew = async (e) => {
     e.preventDefault();
 
+    const collectionRef = collection(db, "books");
+    const payload = {
+      titre: inputs.current[0].value,
+      auteur: inputs.current[1].value,
+    };
     try {
-      await bookToAdd(inputs.current[0].value, inputs.current[1].value);
+      await addDoc(collectionRef, payload);
+
       setValidation("");
       toggleModals("close");
       navigate("/");
@@ -33,40 +39,12 @@ export default function AddBooks() {
     }
   };
 
-  const closeModal = () => {
-    setValidation("");
-    toggleModals("close");
-  };
-
-  // const [title, setTitle] = useState("");
-  // //   const [author, setAuthor] = useState("");
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   if (title !== "") {
-  //     await addDoc(collection(db, "books"), {
-  //       title,
-  //       // author,
-  //       completed: false,
-  //       // comment: null,
-  //     });
-  //     setTitle("");
-  //   }
+  // const closeModal = () => {
+  //   setValidation("");
+  //   toggleModals("close");
   // };
 
   return (
-    // <form onSubmit={handleSubmit}>
-    //   <div className="input_container">
-    //     <input
-    //       type="text"
-    //       placeholder="Enter title"
-    //       value={title}
-    //       onChange={(e) => setTitle(e.target.value)}
-    //     />
-    //   </div>
-    //   <div className="btn_container">
-    //     <button>Add</button>
-    //   </div>
-    // </form>
     <>
       {modalState.addBookModal && (
         <div className="position-fixed top-0 vw-100 vh-100">
@@ -82,7 +60,7 @@ export default function AddBooks() {
               <div className="modal-content">
                 <div className="modal-header">
                   <h5 className="modal-title">
-                    <span role="img" aria-label="bookpile">
+                    <span role="img" aria-label="plant">
                       🪴
                     </span>{" "}
                     Ajouter un livre
@@ -100,8 +78,8 @@ export default function AddBooks() {
                 <div className="modal-body">
                   <form
                     ref={formRef}
-                    onSubmit={handleForm}
-                    className="sign-in-form"
+                    onSubmit={handleNew}
+                    className="add-book-form"
                   >
                     <div className="mb-3">
                       <label className="form-label" htmlFor="bookTitleAdd">
@@ -109,24 +87,26 @@ export default function AddBooks() {
                       </label>
                       <input
                         ref={addInputs}
-                        name="bookToAddTitle"
+                        name="bookTitleToAdd"
                         required
                         type="text"
                         className="form-control"
                         id="bookTitleAdd"
+                        placeholder="Le Guide du Voyageur Galactique"
                       />
                     </div>
                     <div className="mb-3">
-                      <label className="form-label" htmlFor="bookAuthorAdd">
+                      <label className="form-label" htmlFor="bookAuthorToAdd">
                         Renseignez le nom de l'auteur / autrice
                       </label>
                       <input
                         ref={addInputs}
-                        name="authorToAdd"
+                        name="bookAuthorToAdd"
                         required
                         type="text"
+                        placeholder="Douglas Adams"
                         className="form-control"
-                        id="bookAuthorAdd"
+                        id="bookAuthorToAdd"
                       />
                       <p className="text-danger mt-1">{validation}</p>
                     </div>
