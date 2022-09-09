@@ -21,7 +21,7 @@ const GetBooks = () => {
               titre={book.titre}
               auteur={book.auteur}
               key={book.id}
-              comment={book.commentaire}
+              commentaire={book.commentaire}
             />
           ))}
         </div>
