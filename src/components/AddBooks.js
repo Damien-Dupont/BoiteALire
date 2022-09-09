@@ -27,6 +27,7 @@ export default function AddBooks() {
     const payload = {
       titre: inputs.current[0].value,
       auteur: inputs.current[1].value,
+      commentaire: inputs.current[2].value,
     };
     try {
       await addDoc(collectionRef, payload);
@@ -107,6 +108,21 @@ export default function AddBooks() {
                         placeholder="Douglas Adams"
                         className="form-control"
                         id="bookAuthorToAdd"
+                      />
+                      <p className="text-danger mt-1">{validation}</p>
+                    </div>
+                    <div className="mb-3">
+                      <label className="form-label" htmlFor="bookCommentToAdd">
+                        Donnez votre avis sur cette lecture
+                      </label>
+                      <textarea
+                        ref={addInputs}
+                        name="bookCommentToAdd"
+                        required
+                        type="textarea"
+                        placeholder="J'ai adoré"
+                        className="form-control"
+                        id="bookCommentToAdd"
                       />
                       <p className="text-danger mt-1">{validation}</p>
                     </div>

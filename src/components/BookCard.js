@@ -1,9 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactDOM } from "react";
 import "./BookCard.scss";
+import { useNavigate, Link } from "react-router-dom";
+import { appendOwnerState } from "@mui/base";
 
-export default function BookCard({ auteur, titre, comment }) {
+export default function BookCard({ auteur, titre, commentaire }) {
   const bg = document.getElementById("bgcover");
+  const lien = `${titre}_${auteur}`.replace(` `, `_`).replace(`&apos;`, ``);
+
+  // const commentaireCount = commentaire ? commentaire.length : 0;
+  // console.log(commentaireCount);
+
+  const [isShown, setIsShown] = useState(false);
+  // const navigate = useNavigate();
+  // const handleOpenBook = () => {
+  //   navigate("/commentaires", { state: { openBook } });
+  // };
 
   function authorColor(auteur) {
     let rgbcolors = [];
@@ -16,14 +28,20 @@ export default function BookCard({ auteur, titre, comment }) {
     rgbcolors.push(Math.floor(colorA), Math.floor(colorB), Math.floor(colorC));
     return rgbcolors;
   }
-  console.log(`auteur: ${auteur} - rgbA: ${authorColor(auteur)}`);
+
   const rgbStyle = `rgba(${authorColor(auteur)[0]},${authorColor(auteur)[1]},${
     authorColor(auteur)[2]
   })`;
+  const rgbStyleReverse = `rgba(${authorColor(auteur)[2]},${
+    authorColor(auteur)[1]
+  },${authorColor(auteur)[0]})`;
 
   return (
     <div className="w-auto d-sm-flex flex-wrap m-3">
-      <article>
+      <article
+        onMouseEnter={() => setIsShown(true)}
+        onMouseLeave={() => setIsShown(false)}
+      >
         <div className="cover-back"></div>
         <div className="pages">
           <span></span>
@@ -34,23 +52,41 @@ export default function BookCard({ auteur, titre, comment }) {
         </div>
 
         <div>
-          <div
-            className="cover"
-            style={{
-              backgroundColor: rgbStyle,
-            }}
-          >
-            <span className="title">{titre}</span>
-            {comment && comment ? (
-              <span>
-                <span className="comments">💬</span>
-                <span className="commentscount">{comment.count}</span>
-              </span>
-            ) : (
-              ""
-            )}
-            <span className="author">{auteur}</span>
-          </div>
+          {isShown && commentaire ? (
+            <Link to={`/livre/${lien}`}>
+              <div
+                className="cover"
+                style={{
+                  backgroundColor: rgbStyleReverse,
+                }}
+              >
+                <span className="title">Ce livre a des commentaires</span>(
+                <span>
+                  <span className="comments">💬</span>
+                </span>
+                <span className="author">Cliquer pour les lire</span>
+              </div>
+            </Link>
+          ) : (
+            <div
+              className="cover"
+              style={{
+                backgroundColor: rgbStyle,
+              }}
+            >
+              <span className="title">{titre}</span>(
+              {commentaire ? (
+                <span>
+                  <span className="comments">💬</span>
+
+                  {/* <span className="commentscount">{commentaireCount}</span> */}
+                </span>
+              ) : (
+                ""
+              )}
+              <span className="author">{auteur}</span>
+            </div>
+          )}
         </div>
         <div className="spine">
           <span>

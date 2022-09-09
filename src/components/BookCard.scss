@@ -1,6 +1,6 @@
 :root {
   --titlesize: 2rem;
-  --commentsize: 1.5rem;
+  --commentsize: 1.6rem;
 }
 // // //
 // #coverzone {
@@ -147,7 +147,7 @@ article {
     position: absolute;
 
     bottom: 8%;
-    left: 3%;
+    left: 2%;
     width: 25%;
     font-size: var(--commentsize);
     font-family: sans-serif;
@@ -173,10 +173,9 @@ article {
     display: inline-block;
     color: white;
     position: absolute;
-    bottom: 8%;
-    left: -30%;
+    bottom: 46%;
+    right: -613%;
     width: 300px;
-    height: 83%;
     transform: rotate(-90deg);
     font-size: 15px;
     font-family: sans-serif;
