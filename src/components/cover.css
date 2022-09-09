@@ -14,3 +14,17 @@ body {
   height: 100vh;
   mix-blend-mode: hue;
 }
+
+span {
+  display: inline-block;
+  color: white;
+  position: absolute;
+  bottom: 7%;
+  left: -30%;
+  width: 300px;
+  height: 75%;
+  transform: rotate(-91deg);
+  font-size: 13px;
+  font-family: sans-serif;
+  text-align: left;
+}

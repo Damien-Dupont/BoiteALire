@@ -22,7 +22,7 @@ export default function BookCard({ auteur, titre }) {
   })`;
 
   return (
-    <div heigth="90px" className="d-sm-flex flex-wrap m-3">
+    <div className="w-auto d-sm-flex flex-wrap m-3">
       <article>
         <div className="cover-back"></div>
         <div className="pages">
@@ -41,11 +41,13 @@ export default function BookCard({ auteur, titre }) {
             }}
           >
             <span className="title">{titre}</span>
+            <span className="author">{auteur}</span>
           </div>
         </div>
         <div className="spine">
-          <span>{titre}</span>
-          <span>{auteur}</span>
+          <span>
+            {titre} --- {auteur}
+          </span>
         </div>
         <div className="spine-shadow"></div>
       </article>
