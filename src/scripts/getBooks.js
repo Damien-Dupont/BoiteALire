@@ -13,7 +13,7 @@ const GetBooks = () => {
   }, []);
 
   const shuffleArray = (books) => {
-    // Fisher-Yates algorithm
+    // Fisher-Yates shuffling algorithm
     for (let i = books.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       const temp = books[i];
@@ -33,7 +33,7 @@ const GetBooks = () => {
               titre={book.titre}
               auteur={book.auteur}
               key={book.id}
-              commentaire={book.commentaire}
+              commentaires={`books/${book.id}/commentaires`}
             />
           ))}
         </div>

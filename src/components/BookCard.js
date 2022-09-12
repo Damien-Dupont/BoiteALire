@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Link } from "react-router-dom";
+import { db } from "../firebase-config";
 import "./BookCard.scss";
 
-export default function BookCard({ auteur, titre, commentaire }) {
+export default function BookCard({ auteur, titre, commentaires }) {
   const lien = `${titre}_${auteur}`.replace(` `, `_`).replace(`&apos;`, ``);
   const [isShown, setIsShown] = useState(false);
 
@@ -17,11 +19,13 @@ export default function BookCard({ auteur, titre, commentaire }) {
     rgbcolors.push(Math.floor(colorA), Math.floor(colorB), Math.floor(colorC));
     return rgbcolors;
   }
-  console.log(`auteur: ${auteur} - rgbA: ${authorColor(auteur)}`);
+
   const rgbStyle = `rgba(${authorColor(auteur)[0]},${authorColor(auteur)[1]},${
     authorColor(auteur)[2]
   })`;
   const rgbStyleReverse = `rgba(200,200,200)`;
+
+  // insérer ici une fonction pour compter le nombre de commentaires
 
   return (
     <div className="w-auto d-sm-flex flex-wrap m-3">
@@ -39,7 +43,7 @@ export default function BookCard({ auteur, titre, commentaire }) {
         </div>
 
         <div>
-          {isShown && commentaire ? (
+          {isShown && commentaires ? (
             <Link to={`/livre/${lien}`}>
               <div
                 className="cover"
@@ -47,11 +51,11 @@ export default function BookCard({ auteur, titre, commentaire }) {
                   backgroundColor: rgbStyleReverse,
                 }}
               >
-                <span className="title">Ce livre a des commentaires</span>
+                <span className="title">Voir les commentaires</span>
                 <span>
                   <span className="comments">💬</span>
                 </span>
-                <span className="author">Cliquez pour les lire</span>
+                <span className="author">Cliquez...</span>
               </div>
             </Link>
           ) : (
@@ -62,11 +66,11 @@ export default function BookCard({ auteur, titre, commentaire }) {
               }}
             >
               <span className="title">{titre}</span>(
-              {commentaire ? (
+              {commentaires ? (
                 <span>
                   <span className="comments">💬</span>
 
-                  {/* <span className="commentscount">{commentaireCount}</span> */}
+                  {/* <span className="commentscount">{howManyComments}</span> */}
                 </span>
               ) : (
                 ""
