@@ -19,10 +19,10 @@ const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
   return (
     <div className="container p-5">
       <h1 className="display-3 text-light">
-        {currentUser ? welcomeBack : helloNewGuy}
+        {!currentUser ? welcomeBack : helloNewGuy}
       </h1>
       <img src={paperTree} width={width} />
-      {!currentUser ? (
+      {currentUser ? (
         <>
           <p className="text-light">{pleaseJoin}</p>
           <AboutPage />

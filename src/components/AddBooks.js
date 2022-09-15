@@ -40,11 +40,6 @@ export default function AddBooks() {
     }
   };
 
-  // const closeModal = () => {
-  //   setValidation("");
-  //   toggleModals("close");
-  // };
-
   return (
     <>
       {modalState.addBookModal && (
@@ -138,5 +133,3 @@ export default function AddBooks() {
     </>
   );
 }
-
-// addTodo.js
