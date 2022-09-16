@@ -3,18 +3,17 @@ import { UserContext } from "../context/userContext";
 import paperTree from "../media/paper-cut-tree.jpg";
 import GetBooks from "../scripts/getBooks";
 
-export interface IHomePageProps {}
+// export interface IHomePageProps {}
 
-const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
+const HomePage = (props) => {
   const { currentUser } = useContext(UserContext);
-  const width: number =
-    0.8 * (window.outerWidth > 500 ? 500 : window.outerWidth);
+  const width = 0.8 * (window.outerWidth > 500 ? 500 : window.outerWidth);
 
-  const helloNewGuy: string = "Bienvenue dans l'Arbre à Lire.";
-  const welcomeBack: string = "Heureux de vous retrouver";
-  const pleaseJoin: string =
+  const helloNewGuy = "Bienvenue dans l'Arbre à Lire.";
+  const welcomeBack = "Heureux de vous retrouver";
+  const pleaseJoin =
     "Pour poursuivre, merci de vous connecter ou de créer un compte. C'est rapide et gratuit!";
-  const question: string = "Avez-vous lu de nouveaux livres récemment?";
+  const question = "Avez-vous lu de nouveaux livres récemment?";
   return (
     <div className="d-flex justify-content-center text-center">
       <div className="w-auto d-sm-flex flex-column m-3">
