@@ -10,11 +10,11 @@ import Private from "./pages/Private/Private";
 import PrivateHome from "./pages/Private/PrivateHome/PrivateHome";
 import AddBooks from "./components/AddBooks";
 
-export interface IAppProps {
-  bookId: string;
-}
+// export interface IAppProps {
+//   bookId: string;
+// }
 
-const App = ({ bookId }: IAppProps) => {
+const App = (bookId) => {
   console.log(`app: ${bookId}`);
 
   return (
