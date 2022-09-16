@@ -33,6 +33,7 @@ const GetBooks = () => {
               titre={book.titre}
               auteur={book.auteur}
               key={book.id}
+              bookId={book.id}
               commentaires={`books/${book.id}/commentaires`}
             />
           ))}

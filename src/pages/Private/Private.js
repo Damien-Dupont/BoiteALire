@@ -11,6 +11,7 @@ export default function Private() {
 
   return (
     <div className="container">
+      private
       <Outlet />
     </div>
   );

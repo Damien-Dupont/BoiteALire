@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { UserContext } from "../context/userContext";
 import paperTree from "../media/paper-cut-tree.jpg";
 import GetBooks from "../scripts/getBooks";
-import AboutPage from "./About";
 
 export interface IHomePageProps {}
 
@@ -28,7 +27,6 @@ const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
         {!currentUser ? (
           <>
             <p className="text-light">{pleaseJoin}</p>
-            <AboutPage />
           </>
         ) : (
           <>

@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 import { db } from "../firebase-config";
 import "./BookCard.scss";
 
-export default function BookCard({ auteur, titre, commentaires }) {
-  const lien = `${titre}_${auteur}`.replace(` `, `_`).replace(`&apos;`, ``);
+export default function BookCard({ auteur, titre, commentaires, bookId }) {
+  console.log(`bookId: ${bookId}`);
+  const lien = `${titre}-${auteur}`
+    .normalize("NFD")
+    .replace(/[ |']/g, `_`)
+    .replace(/[\u0300-\u036f]/g, ``);
   const [isShown, setIsShown] = useState(false);
 
   function authorColor(auteur) {
@@ -25,7 +29,7 @@ export default function BookCard({ auteur, titre, commentaires }) {
   })`;
   const rgbStyleReverse = `rgba(200,200,200)`;
 
-  // insérer ici une fonction pour compter le nombre de commentaires
+  // insérer ici une fonction pour compter le nombre de commentaires avant de les afficher sur la couverture du livre
 
   return (
     <div className="w-auto d-sm-flex flex-wrap m-3">
@@ -44,7 +48,12 @@ export default function BookCard({ auteur, titre, commentaires }) {
 
         <div>
           {isShown && commentaires ? (
-            <Link to={`/livre/${lien}`}>
+            <Link
+              to={{
+                pathname: `/livre/${lien}`,
+                bookId: bookId,
+              }}
+            >
               <div
                 className="cover"
                 style={{

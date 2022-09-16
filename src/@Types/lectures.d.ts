@@ -10,3 +10,10 @@ export interface INavbar {
 }
 
 export interface Iinputs {}
+
+export interface IAboutPageProps {
+  pathname: string;
+  bookID: string;
+  author: string;
+  title: string;
+}

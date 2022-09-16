@@ -10,9 +10,13 @@ import Private from "./pages/Private/Private";
 import PrivateHome from "./pages/Private/PrivateHome/PrivateHome";
 import AddBooks from "./components/AddBooks";
 
-export interface IAppProps {}
+export interface IAppProps {
+  bookId: string;
+}
 
-const App: React.FunctionComponent<IAppProps> = (props) => {
+const App = ({ bookId }: IAppProps) => {
+  console.log(`app: ${bookId}`);
+
   return (
     <>
       <Helmet>
@@ -25,7 +29,11 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
 
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
-        <Route path="/" element={<AboutPage />}></Route>
+        <Route
+          path="/livre/:props"
+          element={<AboutPage bookId={bookId} />}
+        ></Route>
+
         <Route path="/private" element={<Private />}>
           <Route path="/private/private-home" element={<PrivateHome />} />
         </Route>
