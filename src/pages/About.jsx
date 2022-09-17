@@ -2,20 +2,20 @@ import React from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
 
-type IAboutPageProps = {
-  pathname?: string;
-  bookId: string;
-  author?: string;
-  title?: string;
-};
+// type IAboutPageProps = {
+//   pathname?: string;
+//   bookId: string;
+//   author?: string;
+//   title?: string;
+// };
 
-type IBookRef = { bookId: string };
+// type IBookRef = { bookId: string };
 
-const bookRef = ({ bookId }: IBookRef) => {
+const bookRef = (bookId) => {
   doc(db, "books", bookId);
 };
 
-const AboutPage = ({ bookId }: IAboutPageProps) => {
+const AboutPage = (bookId) => {
   console.log(`About: ${bookId}`);
   return (
     <div className="container p-5">

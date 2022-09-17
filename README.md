@@ -1,6 +1,6 @@
 # BoiteALire
 
-PoC d'une app d'avis de lecture (TS &amp;&amp; Firebase)
+PoC d'une app d'avis de lecture (JS &amp;&amp; Firebase)
 
 Credits:
 
