@@ -14,7 +14,7 @@ import AddBooks from "./components/AddBooks";
 //   bookId: string;
 // }
 
-const App = (bookId) => {
+const App = (bookId, titre, auteur) => {
   console.log(`app: ${bookId}`);
 
   return (
@@ -30,8 +30,8 @@ const App = (bookId) => {
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route
-          path="/livre/:props"
-          element={<AboutPage bookId={bookId} />}
+          path="/livre/:bookId/:auteur/:titre"
+          element={<AboutPage />}
         ></Route>
 
         <Route path="/private" element={<Private />}>
