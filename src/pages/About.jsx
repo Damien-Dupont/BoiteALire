@@ -1,39 +1,36 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  collection,
-  onSnapshot,
-  doc,
-  getDoc,
-  getDocFromCache,
-} from "firebase/firestore";
+import { collection, onSnapshot, doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
 
 import BookCard from "../components/BookCard";
 import CommentsList from "../components/CommentsList";
 import AddComment from "../components/AddComment";
 
-async function bookInfo(bookRef) {
-  try {
-    const bookSnap = await getDoc(bookRef);
+// async function bookInfo(bookRef) {
+//   try {
+//     const bookSnap = await getDoc(bookRef);
 
-    const currentBook = [
-      { auteur: bookSnap.data().auteur, titre: bookSnap.data().titre },
-    ];
+//     const currentBook = [
+//       { auteur: bookSnap.data().auteur, titre: bookSnap.data().titre },
+//     ];
 
-    return currentBook;
-  } catch (err) {
-    console.warn(err);
-  }
-}
+//     return currentBook;
+//   } catch (err) {
+//     console.warn(err);
+//   }
+// }
 
 export default function AboutPage() {
-  const [livre, setLivre] = useState([{ auteur: "", titre: "" }]);
+  // const [livre, setLivre] = useState([{ auteur: "", titre: "" }]);
   const { bookId } = useParams();
   const commentsPath = `books/${bookId}/comments`;
+  // console.log("path");
+  // console.log(commentsPath);
 
-  const currentBook = bookInfo(doc(db, "books", bookId));
-  setLivre(currentBook);
+  // console.log("livre");
+  // console.log(livre);
+  // setLivre(bookInfo(doc(db, "books", bookId)));
 
   const [comments, setComments] = useState([
     { name: "Loading...", id: "initial" },
@@ -50,16 +47,16 @@ export default function AboutPage() {
       <div className="d-flex flex-row">
         <div className="d-flex flex-wrap">
           <BookCard
-            titre={currentBook.titre}
-            auteur={currentBook.auteur}
+            titre={livre.titre}
+            auteur={livre.auteur}
             key={bookId}
             bookId={bookId}
             commentaires={``}
           />
         </div>
         <div className="display-4 d-flex flex-column text-info">
-          <div>{currentBook.titre}</div>
-          <div>{currentBook.auteur}</div>
+          <div>{livre.titre}</div>
+          <div>{livre.auteur}</div>
         </div>
       </div>
       <div className="text-light">

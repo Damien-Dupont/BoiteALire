@@ -15,8 +15,6 @@ import AddBooks from "./components/AddBooks";
 // }
 
 const App = (bookId, titre, auteur) => {
-  console.log(`app: ${bookId}`);
-
   return (
     <>
       <Helmet>
